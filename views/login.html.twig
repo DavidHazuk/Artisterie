@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+{% set loginMenu = true %}
+
+{% block title %}Login utilisateur{% endblock %}
+
+{% block content %}
+	<main id="mainLoginForm" class="container-fluid">
+		<div class="container">
+			<div class="row py-4">
+				<h2 class="col-12">{{ block('title') }}</h2>
+				{% if error %}
+					<div class="alert alert-danger">
+						<strong>Echec du login !</strong> {{ error }}
+					</div>
+				{% endif %}
+				<form class="col-12 form-signin" action="{{ path('login_check') }}" method="post">
+					<input type="hidden" name=""_target_path" value="{{path('member')}}"/>
+					<div class="form-group">
+						<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+							<input type="text" name="_username" value="{{ last_username }}" class="form-control" placeholder="Login" required autofocus>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+							<input type="password" name="_password" class="form-control" placeholder="Mot de passe" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+							<button type="submit" class="btn btn-default btn-primary">Login</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,838 @@
+/*
+##     ##     ###     ########   ####     ###     ########   ##         ########    ######    
+##     ##    ## ##    ##     ##   ##     ## ##    ##     ##  ##         ##         ##    ##   
+##     ##   ##   ##   ##     ##   ##    ##   ##   ##     ##  ##         ##         ##         
+##     ##  ##     ##  ########    ##   ##     ##  ########   ##         ######      ######    
+ ##   ##   #########  ##   ##     ##   #########  ##     ##  ##         ##               ##   
+  ## ##    ##     ##  ##    ##    ##   ##     ##  ##     ##  ##         ##         ##    ##   
+   ###     ##     ##  ##     ##  ####  ##     ##  ########   ########   ########    ######    
+*/
+
+/* COLORS */
+@white: #FFFFFF;
+@black: #202020;
+@darkgrey: #505050;
+@mediumgrey: #808080;
+@lightgrey: #BFBFBF;
+@darkgreen:#287C4E;
+@lightgreen:#1DC918;
+
+/* FONTS */
+@font-face {
+    font-family: 'ciclefina';
+    src: url('../fonts/Cicle_Fina-webfont.eot');
+    src: url('../fonts/Cicle_Fina-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Cicle_Fina-webfont.woff') format('woff'),
+		url('../fonts/Cicle_Fina-webfont.ttf') format('truetype'),
+		url('../fonts/Cicle_Fina-webfont.svg#ciclefina') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ciclesemi';
+    src: url('../fonts/Cicle_Semi-webfont.eot');
+    src: url('../fonts/Cicle_Semi-webfont.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Cicle_Semi-webfont.woff') format('woff'),
+		url('../fonts/Cicle_Semi-webfont.ttf') format('truetype'),
+		url('../fonts/Cicle_Semi-webfont.svg#ciclesemi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@ciclesemi: ciclesemi, sans-serif;
+@montserrat: 'Montserrat', sans-serif;
+
+/* SIZES */
+@menu_height: 58px;
+
+/* RESPONSIVE BREAKPOINTS */
+@sm: ~"(min-width: 34em)"; /* 544px */
+@md: ~"(min-width: 48em)"; /* 768px */
+@lg: ~"(min-width: 62em)"; /* 992px */
+@xl: ~"(min-width: 75em)"; /* 1200px */
+
+/*
+##     ##  ####  ##     ##  ####  ##    ##    ######    
+###   ###   ##    ##   ##    ##   ###   ##   ##    ##   
+#### ####   ##     ## ##     ##   ####  ##   ##         
+## ### ##   ##      ###      ##   ## ## ##    ######    
+##     ##   ##     ## ##     ##   ##  ####         ##   
+##     ##   ##    ##   ##    ##   ##   ###   ##    ##   
+##     ##  ####  ##     ##  ####  ##    ##    ######    
+*/
+.transition(@proprietes){
+    transition: @proprietes;
+    -moz-transition: @proprietes;
+    -webkit-transition: @proprietes;
+}
+.box-shadow(@x, @y, @blur, @color){
+    -webkit-box-box-shadow: @x @y @blur @color;
+    -moz-box-box-shadow: @x @y @blur @color;
+    -ms-flexbox-box-shadow: @x @y @blur @color;
+    -webkit-flex-box-shadow: @x @y @blur @color;
+    box-shadow: @x @y @blur @color;
+}
+.border-radius(@radius){
+    -webkit-box-border-radius: @radius;
+    -moz-box-border-radius: @radius;
+    -ms-flexbox-border-radius: @radius;
+    -webkit-flex-border-radius: @radius;
+    border-radius: @radius;
+}
+.flex-wrap(@valeur){
+    -webkit-box-flex-wrap: @valeur;
+    -moz-box-flex-wrap: @valeur;
+    -ms-flexbox-flex-wrap: @valeur;
+    -webkit-flex-flex-wrap: @valeur;
+    flex-wrap: @valeur;
+}
+.flex-direction(@valeur){
+    -webkit-box-flex-direction: @valeur;
+    -moz-box-flex-direction: @valeur;
+    -ms-flexbox-flex-direction: @valeur;
+    -webkit-flex-flex-direction: @valeur;
+    flex-direction: @valeur;
+}
+.justify-content(@valeur){
+    -webkit-box-justify-content: @valeur;
+    -moz-box-justify-content: @valeur;
+    -ms-flexbox-justify-content: @valeur;
+    -webkit-flex-justify-content: @valeur;
+    justify-content: @valeur;
+}
+.align-items(@valeur){
+    -webkit-box-align-items: @valeur;
+    -moz-box-align-items: @valeur;
+    -ms-flexbox-align-items: @valeur;
+    -webkit-flex-align-items: @valeur;
+    align-items: @valeur;
+}
+.brightness (@valeur) {
+    -webkit-filter: brightness(@valeur);
+    -moz-filter: brightness(@valeur);
+    -o-filter: brightness(@valeur);
+    -ms-filter: brightness(@valeur);
+    filter: brightness(@valeur);
+}
+
+/* CLASSES FANTOMES */
+.flex{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+/* EXEMPLE UTILISATIONS */
+/* 
+.element{
+    APPEL FONCTION
+    .transition(background-color,1s);
+
+    EVENEMENT
+    &:hover{}
+
+    MEDIA QUERY
+    @media @md{}
+}
+*/
+
+/*
+ ######    ########   ##    ##   ########   ########      ###     ##         
+##    ##   ##         ###   ##   ##         ##     ##    ## ##    ##         
+##         ##         ####  ##   ##         ##     ##   ##   ##   ##         
+##   ####  ######     ## ## ##   ######     ########   ##     ##  ##         
+##    ##   ##         ##  ####   ##         ##   ##    #########  ##         
+##    ##   ##         ##   ###   ##         ##    ##   ##     ##  ##         
+ ######    ########   ##    ##   ########   ##     ##  ##     ##  ########   
+*/
+
+*{
+    box-sizing : border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    font-family: @montserrat;
+    color: @black;
+}
+
+header, main, footer{
+    width: 100%;
+}
+
+nav, ul, li, a{
+    //display: block;
+    color: inherit;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: @ciclesemi;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+main{
+    margin-top: @menu_height;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.highlight{
+    fill: @lightgreen;
+}
+.highlight2, .highlightDark{
+    fill: @darkgreen;
+}
+.highlightStroke{
+    stroke: @lightgreen;
+}
+.normalFill{
+    fill: @white;
+}
+.normalStroke{
+    stroke: @white;
+}
+.dark-bg {
+	background-color: @darkgrey;
+	color: white;
+}
+.btn-primary, .btn-info {
+    color: #fff;
+    background-color: @darkgreen;
+    border-color: @darkgrey;
+	&:hover {		
+		color: #fff;
+		background-color: @lightgreen;
+		border-color: @darkgrey;
+	}
+}
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: @darkgreen;
+    border-color: @darkgrey;
+}
+.page-link {    
+    color: @darkgreen;
+	&:hover {
+		color: @darkgreen;
+	}
+}
+.dropdown-item:focus {	
+	background-color: @darkgreen;
+}
+#mainMembre .btn-link:hover {
+    text-decoration-color: @darkgreen;
+	color: @darkgreen;
+}
+
+/*
+##     ##  ########   ##    ##   ##     ##  
+###   ###  ##         ###   ##   ##     ##  
+#### ####  ##         ####  ##   ##     ##  
+## ### ##  ######     ## ## ##   ##     ##  
+##     ##  ##         ##  ####   ##     ##  
+##     ##  ##         ##   ###   ##     ##  
+##     ##  ########   ##    ##    #######   
+*/
+#headerMenu{
+    font-family: @ciclesemi;
+    background-color: @black;
+    color: @white;
+    .box-shadow(1px,2px,12px,@black);
+	min-width: 230px;
+
+    .navbar-toggler {
+        color: @white;
+        border-color: @white;
+        outline-width: 0px;
+
+        &:hover{
+            border-color: @lightgreen;
+            color: @lightgreen;
+        }
+    }
+
+    .nav-link{
+        font-size: 1.1rem;
+        text-transform: uppercase;
+    }
+
+    .active{
+        background-color: @darkgrey;
+    }
+
+    .nav-link:hover{
+        color: @lightgreen;
+    }
+
+    .logo{
+        width: 200px;
+    }
+
+    .logo_burger{
+        width: 40px;
+    }
+}
+
+/*
+##     ##   #######   ##     ##  ########   
+##     ##  ##     ##  ###   ###  ##         
+##     ##  ##     ##  #### ####  ##         
+#########  ##     ##  ## ### ##  ######     
+##     ##  ##     ##  ##     ##  ##         
+##     ##  ##     ##  ##     ##  ##         
+##     ##   #######   ##     ##  ########   
+*/
+#mainHome  {
+    .container-fluid{
+        padding: 0;
+    }
+
+    .carousel-caption {
+		background-color: rgba(0, 0, 0, .5);
+		color: rgba(255, 255, 255, 1);
+		text-align: center;
+		top: 50%;
+		transform: translateY(-50%);
+		bottom: initial;
+		
+		a {
+		text-decoration: none;
+		color: @white;
+        display: inline;
+		
+			&:hover {
+			color: @lightgreen;
+			text-decoration: none;
+			}
+		}
+    }
+
+	h1 {
+		font-size: 1.2em;
+	}
+	
+	a {
+		font-size: 0.5em;
+	}
+	#intro {
+		a {
+			font-size: 1rem;
+			display: inline;
+			color: @lightgreen;
+			&:hover {
+				text-decoration: underline; 
+			}
+		}
+	}
+
+	@media @sm {
+		h1 {
+			font-size: 1.5em;
+		}
+		a {
+			font-size: 0.7em;
+		}
+	}
+	
+	@media @md {
+		h1 {
+			font-size: 2em;
+		}
+		a {
+			font-size: 0.7em;
+		}
+	}
+	
+	@media @lg {
+		h1 {
+			font-size: 2.5em;
+		}
+		a {
+			font-size: 0.9em;
+		}
+	}
+}
+
+
+/*
+##    ##   ########   ##      ##  ######    
+###   ##   ##         ##  ##  ## ##    ##   
+####  ##   ##         ##  ##  ## ##         
+## ## ##   ######     ##  ##  ##  ######    
+##  ####   ##         ##  ##  ##       ##   
+##   ###   ##         ##  ##  ## ##    ##   
+##    ##   ########    ###  ###   ######    
+*/
+#mainNews {
+    img {
+        width: 100%;        
+    }
+	h1 {
+		font-size: x-large;
+		@media @sm {
+			font-size: xx-large;
+		}
+	}
+	.date {
+		font-size: x-small;
+		@media @sm {
+			font-size: medium;
+		}
+	}
+
+	.container-news:nth-child(even) {
+		background-color: @darkgrey;
+		color: white;
+	}
+	
+	ul {
+		margin: 0 auto;
+	}	
+}
+
+
+/*
+ ######    ########   ##     ##  ########   ####   #######   
+##    ##      ##      ##     ##  ##     ##   ##   ##     ##  
+##            ##      ##     ##  ##     ##   ##   ##     ##  
+ ######       ##      ##     ##  ##     ##   ##   ##     ##  
+      ##      ##      ##     ##  ##     ##   ##   ##     ##  
+##    ##      ##      ##     ##  ##     ##   ##   ##     ##  
+ ######       ##       #######   ########   ####   #######   
+*/
+#mainStudio{
+    h1, p {
+        padding: 20px;
+    }
+
+    h5 {
+        font-weight: bold;
+    }
+
+    h6 {
+        padding: 10px;
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    ul {
+        padding: 0 40px;
+    }
+
+    a {
+        display: inline;
+        color: @lightgreen;
+        &:hover {
+            text-decoration: underline; 
+        }
+    }
+
+	/***** Team - Img+Txt Blocks Hover Effect *****/    
+    .blocImg {
+        position: relative;
+        overflow: hidden;
+        img {
+            transform: scale(1.25);
+            .transition(.4s);
+        }
+        .blocIcon {
+            position: absolute;
+            padding: 0 10px;
+            right: 0px;
+            bottom: 5px;
+            .transition(.2s);
+            margin:0;
+        }    
+        .blocTxt {
+            position: absolute;
+            padding: 0 20px;
+            left: 0px;
+            bottom: -50%;
+            font-family: @ciclesemi;
+            .transition(.4s);
+            margin:0;
+        }
+        &:hover {
+            img {
+                transform: scale(1);
+                .brightness(50%);
+            }
+            .blocIcon{
+                opacity:0;
+            }
+            .blocTxt {
+                bottom: 10px;
+            }
+        }
+    }
+
+    /***** Equipment - Mobile Accordion *****/
+    #equipment_accordion {
+        .card-body{
+            padding: 0px;
+        }
+        ul {
+            padding: 20px 20px 20px 30px;
+        }
+        .btn-link {
+        color:inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        }
+    }
+
+    /***** Plan *****/ 
+    #plans {
+        .col-12 {
+            overflow: auto;
+            img {
+            min-width: 800px;
+            }
+        }
+    }
+
+    /***** Services - Mobile Accordion *****/ 
+    #services_accordion {
+        .card-body{
+            padding: 0px;
+        }
+        ul {
+            padding: 20px 20px 20px 30px;
+        }
+        .btn-link {
+        color:inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        }
+
+    }    
+}
+
+
+/*
+########   ########   ##     ##  ########      ###     ########    ######       ###     ##         
+##     ##  ##         ##     ##  ##           ## ##    ##     ##  ##    ##     ## ##    ##         
+##     ##  ##         ##     ##  ##          ##   ##   ##     ##  ##          ##   ##   ##         
+########   ######     #########  ######     ##     ##  ########    ######    ##     ##  ##         
+##   ##    ##         ##     ##  ##         #########  ##   ##          ##   #########  ##         
+##    ##   ##         ##     ##  ##         ##     ##  ##    ##   ##    ##   ##     ##  ##         
+##     ##  ########   ##     ##  ########   ##     ##  ##     ##   ######    ##     ##  ########   
+*/
+
+#mainRehearsal {
+    .dark-bg {
+        background-color: @darkgrey;
+        color: white;
+    }
+    h1{
+        padding: 20px;
+    }
+    p {
+        padding: 20px;
+    }
+    img {
+        box-shadow: 1px 1px 15px @black;
+    }
+    #rooms {
+        p {
+            font-family: @ciclesemi;
+            font-size: 1.5rem;
+        }
+    }
+
+	/***** Plan *****/ 
+    #plans {
+        .col-12 {
+            overflow: auto;
+            img {
+            min-width: 800px;
+            }
+        }
+    }
+}
+
+/*
+   ###     ########   ########   ####   ######    ########    ######    
+  ## ##    ##     ##     ##       ##   ##    ##      ##      ##    ##   
+ ##   ##   ##     ##     ##       ##   ##            ##      ##         
+##     ##  ########      ##       ##    ######       ##       ######    
+#########  ##   ##       ##       ##         ##      ##            ##   
+##     ##  ##    ##      ##       ##   ##    ##      ##      ##    ##   
+##     ##  ##     ##     ##      ####   ######       ##       ######    
+*/
+#mainArtists {
+    .dark-bg {
+        background-color: @darkgrey;
+        color: white;
+    }
+    h1{
+        padding: 20px;
+    }
+    h6 {
+        font-family: @montserrat;
+        font-style: italic;
+        text-align: right;
+        font-size: .8rem;
+    }
+    p {
+        padding: 20px 15px;
+    }
+    
+	img {
+        box-shadow: 1px 1px 15px @black;
+		width:  100%;
+		height: 200px;
+		overflow: hidden;
+		background-position: 50% 50%;
+		background-repeat:   no-repeat;
+		background-size:     cover;
+	}
+
+	#audios {
+	
+		iframe {
+			width: 100%;
+			box-shadow: 1px 1px 15px @black;
+		}
+		h3 {
+			font-weight: bold;
+			font-size: 1.3rem;
+		}
+		h4 {
+			font-size: 1.2rem;
+		}
+		h5 {
+			font-style: italic;
+			font-size: 1rem;
+		}
+		
+    }
+
+    #testimonials {
+        i {
+            color: @lightgrey;
+        }
+        div {
+             padding: 15px 0px;
+        }
+    }
+	
+	.pageGallery{
+		width: 30px;
+		background: @lightgrey;
+		border: 3px solid @lightgrey;
+
+		&.active{
+			border: 3px solid @white;
+			background: @white;
+		}
+		
+	}
+}
+
+
+/*
+ ######     #######   ##    ##   ########      ###      ######    ########   
+##    ##   ##     ##  ###   ##      ##        ## ##    ##    ##      ##      
+##         ##     ##  ####  ##      ##       ##   ##   ##            ##      
+##         ##     ##  ## ## ##      ##      ##     ##  ##            ##      
+##         ##     ##  ##  ####      ##      #########  ##            ##      
+##    ##   ##     ##  ##   ###      ##      ##     ##  ##    ##      ##      
+ ######     #######   ##    ##      ##      ##     ##   ######       ##      
+*/
+#mainContact{
+    #headerContact{
+        color: @white;
+        background: linear-gradient(0deg, rgba(32,32,32,0.8), rgba(32,32,32,0.8)), url("../img/bandeauCarte.png") repeat;
+    }
+
+    #coordonnees{
+        font-family: @ciclesemi;
+        background-color: @lightgrey;
+    }
+    #map{
+        width: 100%;
+        height: 200px;
+    }
+	a {
+		&:hover{
+			color: @darkgreen;
+		}
+	}
+}
+
+
+/*
+##     ##  ########   ##     ##  ########   ########   ########   
+###   ###  ##         ###   ###  ##     ##  ##     ##  ##         
+#### ####  ##         #### ####  ##     ##  ##     ##  ##         
+## ### ##  ######     ## ### ##  ########   ########   ######     
+##     ##  ##         ##     ##  ##     ##  ##   ##    ##         
+##     ##  ##         ##     ##  ##     ##  ##    ##   ##         
+##     ##  ########   ##     ##  ########   ##     ##  ########   
+*/
+#mainMembre{
+	#calendar{
+		// Bouton Aujourd'hui masqué en mobile
+		.fc-today-button{
+			display: none;
+			@media @md{
+				display: inline;
+			}
+		}
+
+		// Première lettre du mois en majuscule
+		.fc-center{
+			text-transform: capitalize;
+		}
+	}
+
+	// Dimensions de la div d'affichage de la couleur dans la liste des locaux
+	.colorRoom{
+		width: 20px;
+		height: 20px;
+	}
+	
+	.btn-link {
+        color:inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+}
+
+/*
+##           #####    ##         
+##    ##    ##   ##   ##    ##   
+##    ##   ##     ##  ##    ##   
+##    ##   ##     ##  ##    ##   
+#########  ##     ##  #########  
+      ##    ##   ##         ##   
+      ##     #####          ##   
+*/
+
+#main404 {
+    margin: 0;
+    height: 100%;
+    background-image: url("../img/broken_guitar.jpg");
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+
+    #error404 {
+        height: 100%;
+        background: rgba(255,255,255,.5);
+        padding: 50px;
+        box-shadow: 1px 1px 20px @black;
+        border-radius: 5px;
+    }
+
+    p {
+        
+        font-size: 1.8rem;
+    }
+
+	a {
+		background: @darkgrey;
+		box-shadow: 1px 1px 5px @black;
+		font-family: @ciclesemi;
+		font-size: 1.2rem;
+		color: white;
+		&:hover {
+			background: @darkgreen;
+			text-decoration: none;
+			color: white;
+		}
+	}
+}
+
+/*
+########    #######    #######   ########   ########   ########   
+##         ##     ##  ##     ##     ##      ##         ##     ##  
+##         ##     ##  ##     ##     ##      ##         ##     ##  
+######     ##     ##  ##     ##     ##      ######     ########   
+##         ##     ##  ##     ##     ##      ##         ##   ##    
+##         ##     ##  ##     ##     ##      ##         ##    ##   
+##          #######    #######      ##      ########   ##     ##  
+*/
+#footerSite{
+    font-family: @ciclesemi;
+    background-color: @black;
+    color: @white;
+    padding: 0;
+    margin: 0;
+
+    .container-fluid {
+        padding: 0;
+    }
+
+    #equalizer_top {
+        width: 100%;
+        height: 50px;
+        background-image: url(../img/soundwave_top_green.png);
+        background-size: contain;
+    }
+
+    #equalizer_bot {
+        width: 100%;
+        height: 50px;
+        background-image: url(../img/soundwave_bottom_green.png);
+        background-size: contain;
+    }
+
+    a {
+		text-decoration: none;
+		color: @white;
+        display: inline;
+
+		&:hover {
+			color: @lightgreen;
+			text-decoration: none;
+		}
+	}
+
+	ul {
+		padding-left: 0px;
+		list-style-type: none;
+	}
+
+	li {
+        img {
+            padding: 5px 0;
+        }
+	}
+
+	#btnContact:hover {
+		background-color: @darkgreen;
+	}
+
+	.separate{
+		@media @md {
+			border-right: 1px solid rgba(255, 255, 255, .2);
+		}
+	}
+
+    .btn {
+        background: @darkgrey;
+        &:hover {
+            background-color: @lightgreen;
+            color: inherit;
+        }
+    }
+
+}

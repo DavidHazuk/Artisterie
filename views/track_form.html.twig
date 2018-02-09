@@ -1,0 +1,65 @@
+{% extends 'layout.html.twig' %}
+{% set memberMenu = true %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+	<main id="mainNewsForm" class="container-fluid">
+		<div class="container">
+			<div class="row py-4">
+				<h2 class="text-center px-0 px-md-3">{{ block('title') }}</h2>
+		        {{ form_start(trackForm, {'attr': {'class': 'col-12 pt-3 px-0 px-md-3'}} ) }}					
+					<fieldset class="col-12 d-flex flex-wrap px-0">
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(trackForm.name) }}
+								{{ form_widget(trackForm.name, {'attr': {'class': 'form-control', 'placeholder':"Titre du morceau"}})}}
+								{{ form_errors(trackForm.name) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(trackForm.url) }}
+								{{ form_widget(trackForm.url, {'attr': {'class': 'form-control pb-5', 'placeholder':"Soundcloud -> Partager -> Intégrer -> <iframe...>"}})}}								
+								{{ form_errors(trackForm.url) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(trackForm.record) }}
+								{{ form_widget(trackForm.record, {'attr': {'class': 'form-control', 'placeholder':"Titre de l'album"}})}}
+								{{ form_errors(trackForm.record) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(trackForm.date) }}
+								{{ form_widget(trackForm.date, {'attr': {'class': 'form-control', 'placeholder':"Date de l'album"}})}}
+								{{ form_errors(trackForm.date) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(trackForm.style) }}
+								{{ form_widget(trackForm.style, {'attr': {'class': 'form-control', 'placeholder':"Style"}})}}
+								{{ form_errors(trackForm.style) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(trackForm.artist) }}
+								{{ form_widget(trackForm.artist, {'attr': {'class': 'form-control', 'placeholder':"Artiste/Groupe"}})}}
+								{{ form_errors(trackForm.artist) }}
+							</div>
+						</div>
+							
+						<div class="form-row p-1 justify-content-center">
+							<button id="btnSubmitGroup" name="btnSubmitNews" class="btn btn-primary">Valider</button>
+						</div>
+					</fieldset>
+                {{ form_end(trackForm) }}
+			</div>
+		</div>
+	</main>		
+
+{% endblock %}

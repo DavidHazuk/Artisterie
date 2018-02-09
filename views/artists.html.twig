@@ -1,0 +1,136 @@
+{% extends "layout.html.twig" %}
+{% set artistsMenu = true %}
+
+{% block title %}Artistes{% endblock %}
+
+{% block content %}
+	<main id="mainArtists">
+
+<!-- 
+   ###     ##     ##  ########   ####   #######    ######    
+  ## ##    ##     ##  ##     ##   ##   ##     ##  ##    ##   
+ ##   ##   ##     ##  ##     ##   ##   ##     ##  ##         
+##     ##  ##     ##  ##     ##   ##   ##     ##   ######    
+#########  ##     ##  ##     ##   ##   ##     ##        ##   
+##     ##  ##     ##  ##     ##   ##   ##     ##  ##    ##   
+##     ##   #######   ########   ####   #######    ######    
+ -->
+
+		<div class="container-fluid" id="audios">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h1 class="text-center">ARTISTES</h1>
+					</div>
+					<div class="col-12 text-justify">
+						<p>De nombreux artistes et groupes de musique nous ont fait confiance... Écoutez le résultat du travail réalisé ensemble !</p><br>
+					</div>
+				</div>
+
+				{% if tracks %}
+					<div class="row">
+						{% for track in tracks %}
+							<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+								{{track.url|raw}}
+								<h3>{{track.artist}} <span style="font-size: 1rem">- {{track.style}} </span></h3>
+								<h4>{{track.record}} ({{track.date}}) </h4>
+								<h5>"{{track.name}}"</h5>
+								<br>
+							</div>	
+						{% endfor %}
+					</div>	
+				{% else %}
+					<div class="alert alert-warning">Désolé, pas d'extrait à écouter pour le moment ! ;-)</div>
+				{% endif %}
+				
+			</div>
+		</div>	
+
+<!--
+ ######       ###     ##         ##         ########   ########   ##    ##   
+##    ##     ## ##    ##         ##         ##         ##     ##   ##  ##    
+##          ##   ##   ##         ##         ##         ##     ##    ####     
+##   ####  ##     ##  ##         ##         ######     ########      ##      
+##    ##   #########  ##         ##         ##         ##   ##       ##      
+##    ##   ##     ##  ##         ##         ##         ##    ##      ##      
+ ######    ##     ##  ########   ########   ########   ##     ##     ##      
+-->
+			<div class="container-fluid dark-bg" id="gallery">                
+                <div class="container">
+                	<div class="row">   
+						<h1 class="col-12 text-center">GALERIE</h1>
+						{% set i = 1 %}
+						{% for picture in pictures %}
+						<figure id="{{i}}" class="imgGallery col-12 col-sm-6 col-md-4 col-lg-3 m-0 pb-4">
+							<a href="{{ asset(picture.imgPath) }}" data-fancybox="group">
+								<img src="{{ asset('/img/transparent.png') }}" style="background-image:url({{ asset(picture.thumbnailPath) }})" alt="{{ picture.name }}"/>
+							</a>
+						</figure>
+						{% set i = i+1 %}
+						{% endfor %}
+					</div>
+					
+                	<div class="row justify-content-center pb-2">
+					{% for i in 1.. ((pictures|length)/24)|round(1, 'ceil') %}
+						<div class="pageGallery rounded m-2 {% if i == 1 %}active{% endif %}" data-pagegallery="{{ i }}"></div>
+					{% endfor %}
+					</div>
+				</div>                
+			</div>
+<!--
+########   ########    ######    ########   ####  ##     ##   #######   ##    ##   ####     ###     ##          ######    
+   ##      ##         ##    ##      ##       ##   ###   ###  ##     ##  ###   ##    ##     ## ##    ##         ##    ##   
+   ##      ##         ##            ##       ##   #### ####  ##     ##  ####  ##    ##    ##   ##   ##         ##         
+   ##      ######      ######       ##       ##   ## ### ##  ##     ##  ## ## ##    ##   ##     ##  ##          ######    
+   ##      ##               ##      ##       ##   ##     ##  ##     ##  ##  ####    ##   #########  ##               ##   
+   ##      ##         ##    ##      ##       ##   ##     ##  ##     ##  ##   ###    ##   ##     ##  ##         ##    ##   
+   ##      ########    ######       ##      ####  ##     ##   #######   ##    ##   ####  ##     ##  ########    ######    
+-->
+		<div class="container-fluid" id="testimonials">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h1 class="text-center">LIVRE D'OR</h1>
+					</div>
+				</div>	
+
+				<div class="row">
+					<div class="col-12 col-sm-4 col-lg-2 px-5 px-sm-0 d-flex align-items-center">		
+						<img src="{{ asset('/img/victormarc_extendedplay.jpg') }}" alt="Victor Marc - Extended Play">
+					</div>	
+					<div class="col-12 col-sm-8 col-lg-10">
+						<p class="text-justify"><i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>Une expérience très enrichissante pour mon premier passage en studio, grâce à la personne qui fait vivre les lieux, Thibaud Pick, un jeune ingénieur du son compétent, avenant, soucieux du détail et à l'écoute. Un studio de travail polyvalent pour faire aboutir tous types de projets dans la bonne humeur.<i class="fa fa-quote-right fa-3x fa-pull-right" aria-hidden="true"></i></p><h6>- Victor Marc -</h6>
+					</div>
+				</div>		
+				<div class="row">
+					<div class="col-12 col-sm-4 col-lg-2 order-sm-last px-5 px-sm-0 d-flex align-items-center">		
+						<img src="{{ asset('/img/mirage.jpg') }}" alt="Adrien - Mirage">
+					</div>	
+					<div class="col-12 col-sm-8 col-lg-10">
+						<p class="text-justify"><i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>Enregistrer à l'Artisterie a été un très bon moment pour nous tous, Thibaud est un ingé son professionnel, patient, et super sympa. Vous savez où aller !<i class="fa fa-quote-right fa-3x fa-pull-right" aria-hidden="true"></i></p><h6>- Adrien (Mirage) -</h6>
+					</div>	
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-4 col-lg-2 px-5 px-sm-0 d-flex align-items-center">		
+						<img src="{{ asset('/img/anaid_jaienvie.jpg') }}" alt="Anaid B. - J'ai Envie">
+					</div>	
+					<div class="col-12 col-sm-8 col-lg-10">
+						<p class="text-justify"><i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>Un lieu où l'on se sent porté par une atmosphère feutrée propice à la création. L'ingénieur son très pro devient très vite un ami. Deux enregistrements d'album, je fais un peu "partie des murs", prête à recommencer...<i class="fa fa-quote-right fa-3x fa-pull-right" aria-hidden="true"></i></p><h6>- Anaid B. -</h6>
+					</div>	
+				</div>	
+				<div class="row">
+					<div class="col-12 col-sm-4 col-lg-2 order-sm-last px-5 px-sm-0 d-flex align-items-center">		
+						<img src="{{ asset('/img/siiilk_endlessmystery.jpg') }}" alt="Siiilk - Endless Mystery">
+					</div>	
+					<div class="col-12 col-sm-8 col-lg-10">
+						<p class="text-justify"><i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>L’atmosphère à la fois zen et studieuse de ce studio est un tremplin à la créativité !<i class="fa fa-quote-right fa-3x fa-pull-right" aria-hidden="true"></i></p><h6>- Richard (Siiilk) -</h6>
+					</div>	
+				</div>	
+					
+			</div>
+		</div>
+
+
+	</main>
+
+{% endblock %}

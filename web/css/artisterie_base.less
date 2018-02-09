@@ -1,0 +1,151 @@
+/* VARIABLES */
+/* Couleurs */
+@white: #FFFFFF;
+@black: #202020;
+@darkgrey: #505050;
+@mediumgrey: #808080;
+@lightgrey: #BFBFBF;
+@darkgreen:#287C4E;
+@lightgreen:#1DC918;
+
+/* Fonts */
+@font-face {
+    font-family: 'ciclefina';
+    src: url('../fonts/Cicle_Fina-webfont.eot');
+    src: url('../fonts/Cicle_Fina-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Cicle_Fina-webfont.woff2') format('woff2'),
+         url('../fonts/Cicle_Fina-webfont.woff') format('woff'),
+         url('../fonts/Cicle_Fina-webfont.ttf') format('truetype'),
+         url('../fonts/Cicle_Fina-webfont.svg#ciclefina') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ciclesemi';
+    src: url('../fonts/Cicle_Semi-webfont.eot');
+    src: url('../fonts/Cicle_Semi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Cicle_Semi-webfont.woff2') format('woff2'),
+         url('../fonts/Cicle_Semi-webfont.woff') format('woff'),
+         url('../fonts/Cicle_Semi-webfont.ttf') format('truetype'),
+         url('../fonts/Cicle_Semi-webfont.svg#ciclesemi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Tailles */
+@menu_height: 80px;
+
+
+
+/* REFERENCES EXACTES */
+@sm: ~"(min-width: 34em)"; /* 544px */
+@md: ~"(min-width: 48em)"; /* 768px */
+@lg: ~"(min-width: 62em)"; /* 992px */
+@xl: ~"(min-width: 75em)"; /* 1200px */
+
+/* FONCTIONS */
+.transition(@proprietes){
+    transition: @proprietes;
+    -moz-transition: @proprietes;
+    -webkit-transition: @proprietes;
+}
+.box-shadow(@x, @y, @blur, @color){
+    -webkit-box-box-shadow: @x @y @blur @color;
+    -moz-box-box-shadow: @x @y @blur @color;
+    -ms-flexbox-box-shadow: @x @y @blur @color;
+    -webkit-flex-box-shadow: @x @y @blur @color;
+    box-shadow: @x @y @blur @color;
+}
+.border-radius(@radius){
+    -webkit-box-border-radius: @radius;
+    -moz-box-border-radius: @radius;
+    -ms-flexbox-border-radius: @radius;
+    -webkit-flex-border-radius: @radius;
+    border-radius: @radius;
+}
+.flex-wrap(@valeur){
+    -webkit-box-flex-wrap: @valeur;
+    -moz-box-flex-wrap: @valeur;
+    -ms-flexbox-flex-wrap: @valeur;
+    -webkit-flex-flex-wrap: @valeur;
+    flex-wrap: @valeur;
+}
+.flex-direction(@valeur){
+    -webkit-box-flex-direction: @valeur;
+    -moz-box-flex-direction: @valeur;
+    -ms-flexbox-flex-direction: @valeur;
+    -webkit-flex-flex-direction: @valeur;
+    flex-direction: @valeur;
+}
+.justify-content(@valeur){
+    -webkit-box-justify-content: @valeur;
+    -moz-box-justify-content: @valeur;
+    -ms-flexbox-justify-content: @valeur;
+    -webkit-flex-justify-content: @valeur;
+    justify-content: @valeur;
+}
+.align-items(@valeur){
+    -webkit-box-align-items: @valeur;
+    -moz-box-align-items: @valeur;
+    -ms-flexbox-align-items: @valeur;
+    -webkit-flex-align-items: @valeur;
+    align-items: @valeur;
+}
+
+/* CLASSES FANTOMES */
+.flex{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+
+/* EXEMPLE UTILISATIONS */
+/* 
+.element{
+    APPEL FONCTION
+    .transition(background-color,1s);
+
+    EVENEMENT
+    &:hover{}
+
+    MEDIA QUERY
+    @media @md{}
+}
+*/
+
+*{
+    box-sizing : border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: @white;
+}
+
+header, main, footer{
+    width: 100%;
+}
+
+nav, ul, li, a{
+    display: block;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: ciclesemi, sans-serif;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" id="Calque_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" viewBox="-10 -10 821 821"
+	 overflow="visible" enable-background="new -10 -10 821 821" xml:space="preserve">
+
+	<style type="text/css" >
+		<![CDATA[
+			#pathCircle {
+				stroke: white;
+				stroke-width: 20;
+			}
+			#pathCircle:hover{
+				stroke: #1DC918;
+				stroke-width: 20;
+			}
+			#pathArtisterie{
+				fill: white;
+			}
+			#pathArtisterie:hover{
+				fill: #1DC918;
+			}
+			#pathStudios{
+				fill: white;
+			}
+		]]>
+	</style>
+
+<g id="pathLogo">
+	<path id="pathCircle" fill-rule="evenodd" clip-rule="evenodd" fill="#1A171B" stroke="#000000" d="M800.5,400.5c0,220.911-179.088,400-400,400
+		c-220.914,0-400-179.089-400-400c0-220.915,179.085-400,400-400C621.412,0.5,800.5,179.585,800.5,400.5z"/>
+	<g id="pathArrow1">
+		<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="233.832,221.296 233.832,333.916 291.499,333.916 
+			291.344,385.939 187.825,386.047 188.022,129.599 291.34,198.583 291.34,256.013 	"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M389.531,263.766c69.561,44.881,138.021,91.021,207.154,136.396
+			c-68.664,45.431-139.051,92.715-207.154,136.4c0-19.385,0-38.764,0-58.152c36.967-27.835,78.066-50.948,115.508-78.248
+			c-37.9-26.531-78.116-50.421-115.508-77.53C389.531,303.011,389.531,283.387,389.531,263.766z"/>
+		<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="188.145,414.053 291.512,414.143 291.512,465.83 
+			233.731,466.025 233.731,575.934 291.512,538.074 291.512,596.945 188.234,668.521 	"/>
+	</g>
+	<path id="pathArrow2" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M638.783,399.891L366.314,220.977l-0.107,164.962h-43.662
+		l-0.103-255.273c0,0,272.792,178.562,407.366,269.945C593.761,489.826,322.4,669.101,322.4,669.101l0.089-254.938l43.723-0.109
+		l0.102,164.537L638.783,399.891z"/>
+</g>
+</svg>

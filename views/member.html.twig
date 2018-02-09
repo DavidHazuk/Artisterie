@@ -1,0 +1,409 @@
+{% extends "layout.html.twig" %}
+
+{% set memberMenu = true %}
+
+{% block title %}Membre{% endblock %}
+
+{% block content %}
+		<main id="mainMembre" class="container-fluid py-3">
+			<div class="container px-1 px-sm-3">
+				{% for flashMessage in app.session.flashbag.get('successMember') %}
+					<div class="alert alert-success">
+						{{ flashMessage }}
+					</div>
+				{% endfor %}
+				<h2>Espace membre</h2>
+
+				<div id="accordion">
+					{# PLANNING ADMIN #}		
+					<div class="card">
+						<div class="card-header" id="headingPlanning">
+							<h5 class="mb-0">
+								<button class="btn btn-link" data-toggle="collapse" data-target="#collapsePlanning" aria-expanded="true" aria-controls="collapsePlanning">
+									Planning
+								</button>
+							</h5>
+						</div>
+						<div id="collapsePlanning" class="collapse {% if accordion == 'planning' %}show{% endif %}" aria-labelledby="headingPlanning" data-parent="#accordion">
+							<div class="card-body p-1 p-sm-1">
+								<div id='calendar'></div>
+							</div>
+						</div>
+					</div>
+					{% if is_granted('ROLE_ADMIN') %}
+					{# NEWS ADMIN #}		
+					<div class="card">
+						<div class="card-header" id="headingNews">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNews" aria-expanded="false" aria-controls="collapseNews">
+									Actus
+								</button>
+							</h5>
+						</div>
+						<div id="collapseNews" class="collapse {% if accordion == 'news' %}show{% endif %}" aria-labelledby="headingNews" data-parent="#accordion">
+							<div class="card-body p-1 p-sm-1">
+								<a href="{{ path('admin_news_add') }}" class="btn btn-primary m-2"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajouter une actu</a>
+								{% if news %}
+									<div class="table-responsive">
+										<table class="table table-hover table-condensed">
+											<thead>
+												<tr>												
+													<th>Titre</th>												
+													<th class="d-none d-sm-table-cell">Contenu</th>
+													<th class="d-none d-md-table-cell">Date</th>
+													<th class="d-none d-lg-table-cell">Photo</th>
+													<th></th>  <!-- Actions column -->												
+												</tr>
+											</thead>
+											{% for new in news %}
+												<tr>
+													<td class="align-middle">{{ new.title }}</td>
+													<td class="d-none d-sm-table-cell">{{ new.content }}</td>
+													<td class="d-none d-md-table-cell align-middle">{{ new.date }}</td>													
+													<td class="d-none d-lg-table-cell">{% if new.imgPath is not null %}<img src="{{ asset(new.imgPath) }}" alt="image de news"/>{% endif %}</td>													
+													<td class="px-1 px-sm-3 d-flex justify-content-center">
+														<a href="{{ path('admin_news_edit', { 'id': new.id }) }}" class="btn btn-info p-1" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+														<button type="button" class="btn btn-danger p-1 ml-2" title="Supprimer" data-toggle="modal" data-target="#newsDialog{{ new.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+														</button>
+														<div class="modal fade" id="newsDialog{{ new.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalNewLabel" aria-hidden="true">
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h4 class="modal-title" id="myModalNewLabel">Confirmation</h4>
+																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																	</div>
+																	<div class="modal-body">
+																		Souhaitez-vous vraiment supprimer cette actu ?
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																		<a href="{{ path('admin_news_delete', { 'id': new.id }) }}" class="btn btn-danger">Confirmer</a>
+																	</div>
+																</div><!-- /.modal-content -->
+															</div><!-- /.modal-dialog -->
+														</div><!-- /.modal -->
+													</td>
+												</tr>
+											{% endfor %}
+										</table>
+									</div>
+								{% else %}
+									<div class="alert alert-warning">Aucune actu.</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{# GALLERY ADMIN #}
+					<div class="card">
+						<div class="card-header" id="headingGallery">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseGallery" aria-expanded="false" aria-controls="collapseGallery">
+									Images galerie
+								</button>
+							</h5>
+						</div>
+						<div id="collapseGallery" class="collapse {% if accordion == 'picture' %}show{% endif %}" aria-labelledby="headingGallery" data-parent="#accordion">
+							<div class="card-body p-1 p-sm-1">
+								<a href="{{ path('admin_picture_add') }}" class="btn btn-primary m-2"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajouter une image</a>
+								{% if pictures %}
+								<div class="table-responsive">
+									<table class="table table-hover table-condensed">
+										<thead>
+											<tr>
+												<th>Nom</th>
+												<th{# class="d-none d-md-table-cell"#}>Photo</th>
+												<th></th>  <!-- Actions column -->
+											</tr>
+										</thead>
+										{% for picture in pictures %}
+											<tr>
+												<td class="align-middle">{{ picture.name }}</td>
+												<td{# class="d-none d-md-table-cell"#}>{% if picture.thumbnailPath is not null %}<div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4"><img src="{{ asset(picture.thumbnailPath) }}" alt="{{ picture.name }}"/></div>{% endif %}</td>													
+												<td class="px-1 px-sm-3 d-flex justify-content-center">
+													<a href="{{ path('admin_picture_edit', { 'id': picture.id }) }}" class="btn btn-info p-1" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+													<button type="button" class="btn btn-danger p-1 ml-2" title="Supprimer" data-toggle="modal" data-target="#pictureDialog{{ picture.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+													</button>
+													<div class="modal fade" id="pictureDialog{{ picture.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalPictureLabel" aria-hidden="true">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h4 class="modal-title" id="myModalPictureLabel">Confirmation</h4>
+																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																</div>
+																<div class="modal-body">
+																	Souhaitez-vous vraiment supprimer cette image ?
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																	<a href="{{ path('admin_picture_delete', { 'id': picture.id }) }}" class="btn btn-danger">Confirmer</a>
+																</div>
+															</div><!-- /.modal-content -->
+														</div><!-- /.modal-dialog -->
+													</div><!-- /.modal -->
+												</td>
+											</tr>
+										{% endfor %}
+									</table>
+								</div>
+								{% else %}
+								<div class="alert alert-warning">Aucune image dans la galerie.</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{# TRACKS ADMIN #}		
+					<div class="card">
+						<div class="card-header" id="headingTracks">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTracks" aria-expanded="false" aria-controls="collapseTracks">
+									Extraits audio
+								</button>
+							</h5>
+						</div>
+						<div id="collapseTracks" class="collapse {% if accordion == 'tracks' %}show{% endif %}" aria-labelledby="headingTracks" data-parent="#accordion">
+							<a href="{{ path('admin_track_add') }}" class="btn btn-primary m-2"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajouter un extrait audio</a>
+							<div class="card-body p-1 p-sm-1">
+								{% if tracks %}
+									<div class="table-responsive">
+										<table class="table table-hover table-condensed">
+											<thead>
+												<tr>												
+													<th>Titre du morceau</th>												
+													<th class="d-none d-md-table-cell">Album</th>
+													<th class="d-none d-md-table-cell">Date</th>
+													<th class="d-none d-md-table-cell">Style</th>
+													<th class="d-none d-md-table-cell">Artiste</th>
+													<th></th>  <!-- Actions column -->												
+												</tr>
+											</thead>
+											{% for track in tracks %}
+												<tr>												
+													<td>{{ track.name }}</td>
+													<td class="d-none d-md-table-cell">{{ track.record }}</td>	
+													<td class="d-none d-sm-table-cell">{{ track.date }}</td>
+													<td class="d-none d-md-table-cell">{{ track.style }}</td>	
+													<td class="d-none d-sm-table-cell">{{ track.artist }}</td>
+																										
+													<td class="px-1 px-sm-3 d-flex justify-content-center">
+														<a href="{{ path('admin_track_edit', { 'id': track.id }) }}" class="btn btn-info p-1" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+														<button type="button" class="btn btn-danger p-1 ml-2" title="Supprimer" data-toggle="modal" data-target="#trackDialog{{ track.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+														</button>
+														<div class="modal fade" id="trackDialog{{ track.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalTrackLabel" aria-hidden="true">
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h4 class="modal-title" id="myModalTrackLabel">Confirmation</h4>
+																		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																	</div>
+																	<div class="modal-body">
+																		Souhaitez-vous vraiment supprimer cet extrait audio ?
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																		<a href="{{ path('admin_track_delete', { 'id': track.id }) }}" class="btn btn-danger">Confirmer</a>
+																	</div>
+																</div><!-- /.modal-content -->
+															</div><!-- /.modal-dialog -->
+														</div><!-- /.modal -->
+													</td>
+												</tr>
+											{% endfor %}
+										</table>
+									</div>
+								{% else %}
+									<div class="alert alert-warning">Aucun extrait audio.</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{% endif %}
+					{# USERS ADMIN #}		
+					<div class="card">
+						<div class="card-header" id="headingUsers">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers">
+								{% if is_granted('ROLE_ADMIN') %}
+									Utilisateurs
+								{% else %}
+									Profil utilisateur
+								{% endif %}
+								</button>
+							</h5>
+						</div>
+						<div id="collapseUsers" class="collapse {% if accordion == 'user' %}show{% endif %}" aria-labelledby="headingUsers" data-parent="#accordion">
+							<div class="card-body p-1 p-sm-1">
+								{% if is_granted('ROLE_ADMIN') %}
+								<a class="btn btn-primary m-2" href="{{ path('admin_user_add') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajouter un utilisateur</a>
+								{% endif %}
+								{% if users %}
+								<div class="table-responsive">
+									<table class="table table-hover table-condensed">
+										<thead>
+											<tr>
+												<th>Nom</th>
+												<th class='d-none d-md-table-cell'>Groupe</th>
+												{% if is_granted('ROLE_ADMIN') %}
+												<th class='d-none d-sm-table-cell'>Role</th>
+												{% endif %}
+												<th></th>  <!-- Actions column -->
+											</tr>
+										</thead>
+										{% for user in users %}
+											{% if (user.id == currentUser.id) or (is_granted('ROLE_ADMIN')) %}
+											<tr>
+												<td>{{ user.username }}</td>
+												<td class='d-none d-md-table-cell'>{{ user.group.name }}</td>
+												{% if is_granted('ROLE_ADMIN') %}
+												<td class='d-none d-sm-table-cell'>
+													{% if user.role == 'ROLE_ADMIN' %}
+														Admin
+													{% else %}
+														Membre
+													{% endif %}
+												</td>
+												{% endif %}
+												<td class="px-1 px-sm-3 d-flex justify-content-center">
+													<a href="{{ path('admin_user_edit', { 'id': user.id }) }}" class="btn btn-info p-1" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+													{% if is_granted('ROLE_ADMIN') %}
+													<button type="button" class="btn btn-danger p-1 ml-2" title="Supprimer" data-toggle="modal" data-target="#userDialog{{ user.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+													</button>
+													<div class="modal fade" id="userDialog{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalUserLabel" aria-hidden="true">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h4 class="modal-title" id="myModalUserLabel">Confirmation</h4>
+																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																</div>
+																<div class="modal-body">
+																	Souhaitez-vous vraiment supprimer cet utilisateur ?
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																	<a href="{{ path('admin_user_delete', { 'id': user.id }) }}" class="btn btn-danger">Confirmer</a>
+																</div>
+															</div><!-- /.modal-content -->
+														</div><!-- /.modal-dialog -->
+													</div><!-- /.modal -->
+													{% endif %}
+												</td>
+											</tr>
+										{% endif %}
+										{% endfor %}
+									</table>
+								</div>
+								{% else %}
+								<div class="alert alert-warning">Aucun utilisateur.</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{% if is_granted('ROLE_ADMIN') %}
+					{# GROUPS ADMIN #}		
+					<div class="card">
+						<div class="card-header" id="headingGroups">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseGroups" aria-expanded="false" aria-controls="collapseGroups">
+									Groupes
+								</button>
+							</h5>
+						</div>
+						<div id="collapseGroups" class="collapse {% if accordion == 'group' %}show{% endif %}" aria-labelledby="headingGroups" data-parent="#accordion">
+							<div class="card-body p-1 p-sm-1">
+								<a class="btn btn-primary m-2" href="{{ path('admin_group_add') }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Ajouter un groupe</a>
+								{% if groups %}
+								<div class="table-responsive">
+									<table class="table table-hover table-condensed">
+										<thead>
+											<tr>
+												<th>Nom</th>
+												<th class='d-none d-md-table-cell'>Nb membres</th>
+												<th class='d-none d-sm-table-cell'>Local</th>
+												<th></th>  <!-- Actions column -->
+											</tr>
+										</thead>
+										{% for group in groups %}
+											<tr>
+												<td>{{ group.name }}</td>
+												<td class='d-none d-md-table-cell'>{{ group.nbMembers }}</td>
+												<td class='d-none d-sm-table-cell'>{{ group.room.name }}</td>
+												<td class="px-1 px-sm-3 d-flex justify-content-center">
+													<a href="{{ path('admin_group_edit', { 'id': group.id }) }}" class="btn btn-info p-1" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+													<button type="button" class="btn btn-danger p-1 ml-2" title="Supprimer" data-toggle="modal" data-target="#groupDialog{{ group.id }}"><i class="fa fa-trash" aria-hidden="true"></i>
+													</button>
+													<div class="modal fade" id="groupDialog{{ group.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalGroupLabel" aria-hidden="true">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h4 class="modal-title" id="myModalGroupLabel">Confirmation</h4>
+																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																</div>
+																<div class="modal-body">
+																	Souhaitez-vous vraiment supprimer ce groupe et tous ses membres ?
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+																	<a href="{{ path('admin_group_delete', { 'id': group.id }) }}" class="btn btn-danger">Confirmer</a>
+																</div>
+															</div><!-- /.modal-content -->
+														</div><!-- /.modal-dialog -->
+													</div><!-- /.modal -->
+												</td>
+											</tr>
+										{% endfor %}
+									</table>
+								</div>
+								{% else %}
+								<div class="alert alert-warning">Aucun groupe.</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>					
+					{# ROOMS ADMIN #}		
+					<div class="card">
+						<div class="card-header" id="headingRooms">
+							<h5 class="mb-0">
+								<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseRooms" aria-expanded="false" aria-controls="collapseRooms">
+									Locaux
+								</button>
+							</h5>
+						</div>
+						<div id="collapseRooms" class="collapse {% if accordion == 'room' %}show{% endif %}" aria-labelledby="headingRooms" data-parent="#accordion">
+							<div class="card-body p-1 p-sm-1">
+								{% if rooms %}
+								<div class="table-responsive">
+									<table class="table table-hover table-condensed">
+										<thead>
+											<tr>
+												<th>Nom</th>
+												<th class='d-none d-sm-table-cell'>Couleur</th>
+												<th></th>  <!-- Actions column -->
+											</tr>
+										</thead>
+										{% for room in rooms %}
+											<tr>
+												<td>{{ room.name }}</td>
+												<td class='d-none d-sm-table-cell'><div class="colorRoom ml-4" style="background-color: {{ room.color }}"></div></td>
+												<td class="px-1 px-sm-3 d-flex justify-content-center">
+													<a href="{{ path('admin_room_edit', { 'id': room.id }) }}" class="btn btn-info p-1" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+												</td>
+											</tr>
+										{% endfor %}
+									</table>
+								</div>
+								{% else %}
+								<div class="alert alert-warning">Aucun local.</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			<div id="fullCalModal" class="modal fade">
+				<div class="modal-dialog">
+					<div id="modalContent" class="modal-content">
+					</div>
+				</div>
+			</div>
+		</main>
+{% endblock %}

@@ -1,0 +1,150 @@
+		<header id=headerMenu class="container-fluid fixed-top">
+			<div class="container px-1 px-sm-3">
+				<div class="row justify-content-between">
+					<nav id="menu" class="navbar navbar-expand-md py-0 pr-0">
+						<div class="d-flex align-items-center">
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</button>
+							<img class="d-md-none logo_burger m-2 ml-3" src="{{ asset('/img/arrow_circle.svg') }}" alt="Logo l'Artisterie" onerror="this.onerror=null; this.src='{{ asset('/img/arrow_circle_white.png') }}';">
+						</div>
+						<div class="collapse navbar-collapse" id="navbarToggler">
+							<ul class="navbar-nav mr-auto">
+								<li class="d-none d-md-inline-flex nav-item {% if homeMenu is defined %}active{% endif %}">
+									<a class="nav-link navbar-brand d-flex align-items-center px-0" href="{{ path('home') }}">
+										<svg class="logo" version="1.1" id="Calque_1" viewBox="-10 -10 3400.914 821" 
+												overflow="visible" enable-background="new -10 -10 3400.914 821" xml:space="preserve">
+										<switch>
+											<foreignObject width="0" height="0" overflow="hidden">
+												<img class="logo" src="{{ asset('/img/logo_circle_white.png') }}" alt="Logo l'Artisterie" />
+											</foreignObject>
+										</switch>										
+										<g id="pathArtisterie" class="normalFill">
+												<path id="pathArtisteriel" d="M928.441,51.774h46.848v486.643h-46.848V51.774z"/>
+												<path id="pathArtisterieap" d="M1022.127,56.063l50.806-4.288l5.938,57.168l-56.745,65.743l-16.496-17.865l22.434-50.022L1022.127,56.063z"/>
+												<path id="pathArtisterieA" d="M1260.973,44.629h36.291l168.254,493.788h-50.146l-66.642-195.086h-138.563c-13.856,40.732-29.032,84.323-43.548,126.484
+													c-7.918,21.438-17.815,47.878-24.414,68.602h-49.486L1260.973,44.629z M1330.914,291.166
+													c-7.258-22.153-18.475-52.166-25.073-72.889v0.715c-11.217-30.728-15.836-43.591-27.053-77.892
+													c-6.598,17.865-14.516,39.303-19.795,57.168v0.715c-11.876,32.871-19.794,56.453-31.671,92.183H1330.914z"/>
+												<path id="pathArtisterier1" d="M1635.083,232.568c-14.516-5.002-16.495-5.002-19.794-5.002c-33.651,0-63.343,35.729-71.261,74.318v236.532h-47.507
+													V223.993c0-12.148-9.897-31.442-28.373-44.305h75.879v27.87c19.795-20.724,45.528-31.442,74.56-31.442
+													c5.938,0,13.856,0,28.372,6.431L1635.083,232.568z"/>
+												<path id="pathArtisteriet1" d="M1778.917,51.774V184.69h83.138v52.166h-83.138v301.561h-46.847V236.856h-46.847V184.69h45.527V51.774H1778.917z"/>
+												<path id="pathArtisteriei1" d="M1939.909,61.779c15.176,0,29.032,13.577,29.032,29.298s-13.856,30.013-29.032,30.013
+													c-16.496,0-28.372-14.292-28.372-30.013S1923.414,61.779,1939.909,61.779z M1916.815,180.402h46.188v358.015h-46.188V180.402z"/>
+												<path id="pathArtisteries" d="M2215.705,261.152c-20.455-20.724-48.827-32.872-77.199-32.872c-35.63,0-63.343,18.58-63.343,45.734
+													c0,26.44,28.372,52.166,67.302,59.312c60.043,10.004,106.231,58.597,106.231,110.763c0,59.312-50.806,100.044-111.51,100.044
+													c-39.589,0-85.776-20.724-112.829-57.168l35.63-30.014c19.135,20.724,48.167,35.73,75.219,35.73
+													c36.291,0,66.642-20.009,66.642-48.593c0-25.011-33.651-52.166-67.961-62.17c-57.404-10.005-106.891-60.026-106.891-108.619
+													c0-57.883,52.786-96.471,114.149-96.471c41.569,0,84.457,22.867,112.83,54.31L2215.705,261.152z"/>
+												<path id="pathArtisteriet2" d="M2395.169,51.774V184.69h83.138v52.166h-83.138v301.561h-46.847V236.856h-46.847V184.69h45.527V51.774H2395.169z"/>
+												<path id="pathArtisteriee1" d="M2739.591,465.528l18.475,45.02c-28.373,17.15-57.404,27.869-86.437,33.586c-5.279,0.715-12.537,0.715-17.155,0.715
+													c-73.9,0-136.583-75.748-141.861-171.504v-13.578c0-101.473,61.363-184.367,134.603-184.367
+													c75.22,0,131.964,78.606,131.964,180.794v27.869h-217.081c6.598,62.885,44.868,108.619,92.375,109.334
+													C2678.887,493.397,2715.837,477.676,2739.591,465.528z M2731.673,334.042c-7.258-61.456-41.568-106.475-84.457-106.475
+													c-40.249,0-74.56,47.163-83.797,106.475H2731.673z"/>
+												<path id="pathArtisterier2" d="M2960.624,232.568c-14.516-5.002-16.495-5.002-19.794-5.002c-33.651,0-63.343,35.729-71.261,74.318v236.532h-47.507
+													V223.993c0-12.148-9.897-31.442-28.373-44.305h75.879v27.87c19.795-20.724,45.528-31.442,74.56-31.442
+													c5.938,0,13.856,0,28.372,6.431L2960.624,232.568z"/>
+												<path id="pathArtisteriei2" d="M3041.115,61.779c15.176,0,29.032,13.577,29.032,29.298s-13.856,30.013-29.032,30.013
+													c-16.496,0-28.372-14.292-28.372-30.013S3024.62,61.779,3041.115,61.779z M3018.021,180.402h46.188v358.015h-46.188V180.402z"/>
+												<path id="pathArtisteriee2" d="M3341.324,465.528l18.475,45.02c-28.373,17.15-57.404,27.869-86.437,33.586c-5.279,0.715-12.537,0.715-17.155,0.715
+													c-73.9,0-136.583-75.748-141.861-171.504v-13.578c0-101.473,61.363-184.367,134.603-184.367
+													c75.22,0,131.964,78.606,131.964,180.794v27.869h-217.081c6.598,62.885,44.868,108.619,92.375,109.334
+													C3280.621,493.397,3317.571,477.676,3341.324,465.528z M3333.406,334.042c-7.258-61.456-41.568-106.475-84.457-106.475
+													c-40.249,0-74.56,47.163-83.797,106.475H3333.406z"/>
+											</g>
+											<g id="pathLogo">
+												<circle id="pathCircle" class="normalStroke" fill-rule="evenodd" clip-rule="evenodd" stroke-width="10" cx="400.5" cy="400.5" r="400"/>
+												<g id="pathArrow1" class="normalFill">
+													<polygon fill-rule="evenodd" clip-rule="evenodd" points="233.832,221.297 233.832,333.917 291.5,333.917 
+														291.345,385.941 187.825,386.048 188.022,129.599 291.34,198.583 291.34,256.014 	"/>
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M389.53,263.767c69.563,44.88,138.021,91.021,207.156,136.396
+														c-68.665,45.428-139.055,92.714-207.156,136.399c0-19.384,0-38.763,0-58.149c36.968-27.838,78.067-50.949,115.505-78.25
+														c-37.897-26.532-78.112-50.422-115.505-77.531C389.53,303.011,389.53,283.388,389.53,263.767z"/>
+													<polygon fill-rule="evenodd" clip-rule="evenodd" points="188.145,414.056 291.512,414.141 291.512,465.831 
+														233.732,466.025 233.732,575.932 291.512,538.077 291.512,596.945 188.234,668.521 	"/>
+												</g>
+												<path id="pathArrow2" class="normalFill" fill-rule="evenodd" clip-rule="evenodd" d="M638.784,399.891L366.314,220.978l-0.107,164.963h-43.663
+													l-0.103-255.274c0,0,272.789,178.562,407.363,269.945C593.761,489.827,322.4,669.101,322.4,669.101l0.09-254.938l43.723-0.107
+													l0.102,164.537L638.784,399.891z"/>
+											</g>
+											<g id="pathStudios" class="normalFill">
+												<path id="pathStudiosS" d="M948.082,727.077c12.342,10.005,31.789,16.086,54.603,16.086c27.302,0,51.237-9.809,51.237-22.363
+													c0-11.967-22.065-22.757-49.367-24.914c-42.635-3.139-76.294-19.422-76.294-38.646c0-21.579,36.277-37.666,81.53-37.666
+													c29.545,0,53.481,6.474,72.929,17.656l-22.439,9.416c-12.716-8.436-30.293-13.34-50.489-13.34
+													c-28.049,0-53.855,10.397-53.855,23.148c0,12.752,22.066,24.13,51.237,25.307c42.635,2.747,74.798,19.422,74.798,38.45
+													c0,20.795-35.903,37.273-80.034,37.273c-31.416,0-59.091-8.828-75.173-21.383L948.082,727.077z"/>
+												<path id="pathStudiost" d="M1409.203,634.091v121.628h-27.301V634.091h-80.783v-13.929h188.119v13.929H1409.203z"/>
+												<path id="pathStudiosu" d="M1737.188,720.015c3.74,11.967,33.66,22.953,69.937,22.953c34.407,0,64.327-10.986,67.692-22.953v-99.853h27.302v100.049
+													c-1.496,20.206-44.505,37.273-94.994,37.273c-53.107,0-95.742-16.871-98.36-37.077V620.162h28.423V720.015z"/>
+												<path id="pathStudiosd" d="M2122.392,620.162h97.238c51.237,0.393,92.002,30.407,92.002,67.484c0,37.272-40.018,67.092-91.254,68.072h-97.986V620.162
+													z M2149.693,634.482v106.916c11.594,0,22.439,0,34.033-0.196c12.342,0,24.684-0.196,36.651-0.196
+													c35.155-0.589,63.953-24.326,63.953-53.359c0-29.23-28.797-52.771-64.701-53.164H2149.693z"/>
+												<path id="pathStudiosi" d="M2559.582,755.719h-27.301V620.162h27.301V755.719z"/>
+												<path id="pathStudioso" d="M2889.431,757.484c-63.205,0-118.182-30.015-118.182-69.446c0-38.058,52.733-68.661,118.182-68.661
+													c67.693,0,117.808,30.407,117.808,68.661c0,20.402-13.089,37.666-35.903,50.417
+													C2950.018,750.618,2921.595,757.484,2889.431,757.484z M2889.431,633.895c-50.115,0-90.506,23.933-90.506,54.144
+													c0,30.407,40.017,54.93,90.506,54.93c51.985,0,91.254-24.522,91.254-54.93c0-15.89-10.846-30.211-29.171-39.823
+													C2935.806,638.995,2913.367,633.895,2889.431,633.895z"/>
+												<path id="pathStudioss" d="M3246.21,727.077c12.342,10.005,31.789,16.086,54.603,16.086c27.302,0,51.237-9.809,51.237-22.363
+													c0-11.967-22.065-22.757-49.367-24.914c-42.635-3.139-76.294-19.422-76.294-38.646c0-21.579,36.277-37.666,81.53-37.666
+													c29.545,0,53.481,6.474,72.929,17.656l-22.439,9.416c-12.716-8.436-30.293-13.34-50.489-13.34
+													c-28.049,0-53.855,10.397-53.855,23.148c0,12.752,22.066,24.13,51.237,25.307c42.635,2.747,74.798,19.422,74.798,38.45
+													c0,20.795-35.903,37.273-80.034,37.273c-31.416,0-59.091-8.828-75.173-21.383L3246.21,727.077z"/>
+											</g>
+										</svg>
+										<span class="sr-only">(current)</span>
+									</a>
+								</li>
+								<li class="d-md-none nav-item {% if homeMenu is defined %}active{% endif %}">
+									<a class="nav-link py-sm-3 px-2 px-lg-3" href={{ path('home') }}>L'Artisterie<span class="sr-only">(current)</span></a>
+								</li>
+								<li class="nav-item {% if studioMenu is defined %}active{% endif %}">
+									<a class="nav-link py-sm-3 px-2 px-lg-3" href={{ path('page', { 'pagename': 'studio' }) }}>Studio</a>
+									{#<a class="nav-link px-2 py-md-3" href="{{ path('studio') }}">Studio</a>#}
+								</li>
+								<li class="nav-item {% if rehearsalMenu is defined %}active{% endif %}">
+									<a class="nav-link py-sm-3 px-2 px-lg-3" href={{ path('page', { 'pagename': 'rehearsal' }) }}>Répétitions</a>
+									{#<a class="nav-link px-2 py-md-3" href="{{ path('rehearsal') }}">Répétitions</a>#}
+								</li>
+								<li class="nav-item {% if artistsMenu is defined %}active{% endif %}">
+									<a class="nav-link py-sm-3 px-2 px-lg-3" href={{ path('page', { 'pagename': 'artists' }) }}>Artistes</a>
+									{#<a class="nav-link px-2 py-md-3" href="{{ path('artists') }}">Artistes</a>#}
+								</li>
+								<li class="nav-item {% if newsMenu is defined %}active{% endif %}">
+									<a class="nav-link py-sm-3 px-2 px-lg-3" href={{ path('page', { 'pagename': 'news' }) }}>Actus</a>
+									{#<a class="nav-link px-2 py-md-3" href={{ path('news') }}>Actus</a>#}
+								</li>
+							</ul>
+						</div>
+					</nav>
+					<nav id="menuRight" class="navbar navbar-expand pl-0 align-items-start">
+						<ul class="navbar-nav mr-auto{# d-flex flex-row justify-content-end#}">
+							<li class="nav-item{% if contactMenu is defined %} active{% endif %}"><a class="nav-link" href="{{ path('contact') }}"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+							{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fa fa-user" aria-hidden="true"></i>{#{{ app.user.username }}#}
+									</a>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="{{ path('member') }}">Espace Membre</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+									</div>
+								</li>
+							{% else %}
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fa fa-user" aria-hidden="true"></i>
+									</a>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="{{ path('login') }}">Connexion</a>
+									</div>
+								</li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>

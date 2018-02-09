@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+{% set memberMenu = true %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+	<main id="mainRoomForm" class="container-fluid">
+		<div class="container">
+			<div class="row py-4">
+				<h2 class="text-center px-0 px-md-3">{{ block('title') }}</h2>
+				{% if form_errors(roomForm) %}
+					<div class="alert alert-danger">
+						{{ form_errors(roomForm) }}
+					</div>
+				{% endif %}
+				{{ form_start(roomForm, {'attr': {'class': 'col-12 pt-3 px-0 px-md-3'}} ) }}
+					<fieldset class="col-12 d-flex flex-wrap px-0">
+						<div class="form-row">
+							<div class="form-group col-12 col-md-6">
+								{{ form_label(roomForm.name) }}
+								{{ form_widget(roomForm.name, {'attr': {'class': 'form-control', 'placeholder':"Nom du groupe"}})}}
+								{{ form_errors(roomForm.name) }}
+							</div>
+							<div class="form-group col-12 col-md-6">
+								{{ form_label(roomForm.color) }}
+								{{ form_widget(roomForm.color, {'attr': {'class': 'form-control color'}})}}
+								{{ form_errors(roomForm.color) }}
+							</div>
+						</div>
+						<div class="form-row p-1 justify-content-center">
+							<button id="btnSubmitRoom" name="btnSubmitRoom" class="btn btn-primary mr-2">Valider</button>
+							<a href="{{ path('member', { 'accordion': 'room' }) }}" class="btn btn-danger ml-2">Annuler</a>
+						</div>
+					</fieldset>
+                {{ form_end(roomForm) }}
+			</div>
+		</div>
+	</main>		
+
+{% endblock %}

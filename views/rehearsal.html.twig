@@ -1,0 +1,115 @@
+{% extends "layout.html.twig" %}
+{% set rehearsalMenu = true %}
+
+{% block title %}Répétitions{% endblock %}
+
+{% block content %}
+	<main id="mainRehearsal">
+	   <!-- 
+	####  ##    ##   ########   ########    #######   
+	 ##   ###   ##      ##      ##     ##  ##     ##  
+	 ##   ####  ##      ##      ##     ##  ##     ##  
+	 ##   ## ## ##      ##      ########   ##     ##  
+	 ##   ##  ####      ##      ##   ##    ##     ##  
+	 ##   ##   ###      ##      ##    ##   ##     ##  
+	####  ##    ##      ##      ##     ##   #######   
+	 -->
+	 <br><br>
+			<div class="container-fluid" id="intro">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+	 						<p class="text-justify">L'Artisterie possède 3 locaux de répétition spacieux, de 29m² à 55 m².Ils sont traités acoustiquement pour que les musiciens puissent répéter dans de bonnes conditions.</p>
+							<p class="text-justify">La location se fait au mois, les locaux ne sont pas équipés, mais suffisamment grands pour y entreposer tout le matériel de plusieurs groupes.</p>
+							<p class="text-justify">L'accès est libre 24h/24 et 7j/7, les répétitions sont sans restrictions les week-end et jours fériés mais ne sont autorisées qu'à partir de 18h en semaine.</p>
+						</div>
+					</div>	 
+				</div>	 
+			</div>	 
+			
+		<!-- 
+		########   ##            ###     ##    ##        
+		##     ##  ##           ## ##    ###   ##      
+		##     ##  ##          ##   ##   ####  ##        
+		########   ##         ##     ##  ## ## ##       
+		##         ##         #########  ##  ####     
+		##         ##         ##     ##  ##   ###      
+		##         ########   ##     ##  ##    ##      
+		 -->
+			<br>
+			<div class="container-fluid dark-bg" id="plans">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+	 						<h1 class="text-center">PLAN</h1>
+	 						<img src="{{ asset('/img/rehearsal_plan_1100px.jpg') }}" alt="Plan des locaux de répétition" usemap="plan">
+	 						<!-- Img link area map -->
+							<map name="plan" id="plan">
+							    <area alt="Locaux d'enregistrement" title="Locaux d'enregistrement" href="{{ path('page', { 'pagename': 'studio' }) }}#plans" shape="rect" coords="1,75,521,300"/>
+							</map>
+	 						<br><br><br><br>
+						</div>
+					</div>	 
+				</div>	 
+			</div>	
+
+
+	<!-- 
+	########    #######    #######   ##     ##   ######    
+	##     ##  ##     ##  ##     ##  ###   ###  ##    ##   
+	##     ##  ##     ##  ##     ##  #### ####  ##         
+	########   ##     ##  ##     ##  ## ### ##   ######    
+	##   ##    ##     ##  ##     ##  ##     ##        ##   
+	##    ##   ##     ##  ##     ##  ##     ##  ##    ##   
+	##     ##   #######    #######   ##     ##   ######    
+	 -->
+			<br>	
+			<div class="container-fluid" id="rooms">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h1 class="text-center">LOCAUX</h1>
+						</div>
+					</div>	
+					<br>
+					<div class="row">
+						<div class="col-12 col-md-2 d-flex align-items-center justify-content-center">
+							<div class="text-center">
+								<h3>Local #1</h3>
+								<p>29 m²</p>
+							</div>
+						</div>	
+						<div class="col-12 col-md-10 d-flex align-items-center justify-content-center">
+							<img src="{{ asset('/img/rehearsal1.jpg') }}" alt="Local 1">
+						</div>
+					</div>
+					<br><br>
+					<div class="row">
+						<div class="col-12 col-md-2 order-md-last d-flex align-items-center justify-content-center">
+							<div>
+								<h3>Local #2</h3>
+								<p>30 m²</p>
+							</div>	
+						</div>	
+						<div class="col-12 col-md-10 d-flex align-items-center justify-content-center">
+							<img src="{{ asset('/img/rehearsal2.jpg') }}" alt="Local 1">
+						</div>
+					</div>
+					<br><br>
+					<div class="row">
+						<div class="col-12 col-md-2 d-flex align-items-center text-center justify-content-center">
+							<div>
+								<h3>Local #3</h3>
+								<p>55 m²</p>
+							</div>
+						</div>	
+						<div class="col-12 col-md-10 d-flex align-items-center justify-content-center">
+							<img src="{{ asset('/img/rehearsal3.jpg') }}" alt="Local 1">
+						</div>
+					</div>
+					<br>
+				</div>	 
+			</div>	 		    
+	    
+	</main>
+{% endblock %}

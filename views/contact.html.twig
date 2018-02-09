@@ -1,0 +1,66 @@
+{% extends "layout.html.twig" %}
+
+{% set contactMenu = true %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+	<main id="mainContact" class="container-fluid">
+		<div id="headerContact" class="row flex-column py-4">
+			<h2 class="pt-3 text-center">Contact L'Artisterie</h2>
+			<p class="p-3 text-center">Appelez-nous au 0665074731</p>
+			<p class="pb-3 text-center">artisterie.artisterie@gmail.com</p>
+		</div>
+		<div class="container">
+			<div class="row">
+		        {{ form_start(contactForm, {'attr': {'class': 'col-12 col-md-8 py-4'}} ) }}
+					<fieldset class="col-12 d-flex flex-wrap">
+						<legend class="col-12 p-0">Formulaire de contact</legend>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_widget(contactForm.type, {'attr': {'class': 'form-control'}})}}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12 col-md-6">
+								{{ form_widget(contactForm.firstname, {'attr': {'class': 'form-control', 'placeholder':'Prénom'}})}}
+							</div>
+							<div class="form-group col-12 col-md-6">
+								{{ form_widget(contactForm.lastname, {'attr': {'class': 'form-control', 'placeholder':'Nom'}})}}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12 col-md-4">
+								{{ form_widget(contactForm.telephone, {'attr': {'class': 'form-control', 'placeholder':'Téléphone'}})}}
+							</div>
+							<div class="form-group col-12 col-md-8">
+								{{ form_widget(contactForm.email, {'attr': {'class': 'form-control', 'placeholder':'Email'}})}}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_widget(contactForm.message, {'attr': {'class': 'form-control', 'placeholder':'Message', 'rows':8}})}}
+							</div>
+						</div>
+						<div class="form-row p-1 justify-content-center">
+							<button id="btnSubmitContact" name="btnSubmitContact" class="btn btn-primary">Envoyer</button>
+						</div>
+					</fieldset>
+                {{ form_end(contactForm) }}
+
+				<div class='col-12 col-md-4 p-0'>
+					<div id="coordonnees">
+						<div id="map"></div>
+						<div class="p-3 text-center">
+	                        <h3>L'Artisterie</h3>
+	                        <p>185 rue Jean Voillot</p>
+	                        <p>69100 Villeurbanne</p>
+	                        <p>0665074731</p>
+	                        <p><a href="">artisterie.artisterie@gmail.com</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>		
+{% endblock %}

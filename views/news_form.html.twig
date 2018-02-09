@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+{% set memberMenu = true %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+	<main id="mainNewsForm" class="container-fluid">
+		<div class="container">
+			<div class="row py-4">
+				<h2 class="text-center px-0 px-md-3">{{ block('title') }}</h2>
+		        {{ form_start(newsForm, {'attr': {'class': 'col-12 pt-3 px-0 px-md-3'}} ) }}					
+					<fieldset class="col-12 d-flex flex-wrap px-0">
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(newsForm.title) }}
+								{{ form_widget(newsForm.title, {'attr': {'class': 'form-control', 'placeholder':"Titre de la news"}})}}
+								{{ form_errors(newsForm.title) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(newsForm.content) }}
+								{{ form_widget(newsForm.content, {'attr': {'class': 'form-control pb-5', 'placeholder':"Contenu..."}})}}								
+								{{ form_errors(newsForm.content) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">								
+								{{ form_label(newsForm.imgPath) }}
+								{% if imgPath is not null %}
+								<figure class="p-3 border border-1 border-dark col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+									<img src="{{ asset(imgPath) }}" alt="image de news"/>
+								</figure>
+								{% endif %}
+								{{ form_widget(newsForm.imgPath, {'attr': {'class': 'form-control'}})}}
+								{{ form_errors(newsForm.imgPath) }}
+							</div>
+						</div>
+						<div class="form-row p-1 justify-content-center">
+							<button id="btnSubmitNews" name="btnSubmitNews" class="btn btn-primary">Valider</button>
+							<a href="{{ path('member', { 'accordion': 'news' }) }}" class="btn btn-danger ml-2">Annuler</a>
+						</div>
+					</fieldset>
+                {{ form_end(newsForm) }}
+			</div>
+		</div>
+	</main>		
+
+{% endblock %}

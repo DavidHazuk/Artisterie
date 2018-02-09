@@ -1,0 +1,64 @@
+{% extends 'layout.html.twig' %}
+{% set memberMenu = true %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+	<main id="mainUserForm" class="container-fluid">
+		<div class="container">
+			<div class="row py-4">
+				<h2 class="text-center px-0 px-md-3">{{ block('title') }}</h2>
+{#				{% for flashMessage in app.session.flashbag.get('success') %}
+					<div class="alert alert-success">
+						{{ flashMessage }}
+					</div>
+				{% endfor %}#}
+				{% if form_errors(pictureForm) %}
+					<div class="alert alert-danger">
+						{{ form_errors(pictureForm) }}
+					</div>
+				{% endif %}
+		        {{ form_start(pictureForm, {'attr': {'class': 'col-12 pt-3 px-0 px-md-3'}} ) }}
+					<fieldset class="col-12 d-flex flex-wrap px-0">
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(pictureForm.name) }}
+								{{ form_widget(pictureForm.name, {'attr': {'class': 'form-control', 'placeholder':"Nom de l'image"}})}}
+								{{ form_errors(pictureForm.name) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(pictureForm.thumbnailPath)}}
+								{% if thumbnailPath is not null %}
+								<figure class="p-3 border border-1 border-dark col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+									<img src="{{ asset(thumbnailPath) }}" alt="{{ asset(picture.name) }}"/>
+								</figure>
+								{% endif %}
+								{{ form_widget(pictureForm.thumbnailPath, {'attr': {'class': 'form-control'}})}}
+								{{ form_errors(pictureForm.thumbnailPath) }}
+							</div>
+						</div>							
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(pictureForm.imgPath)}}
+								{% if imgPath is not null %}
+								<figure class="p-3 border border-1 border-dark col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+									<img src="{{ asset(imgPath) }}" alt="{{ asset(picture.name) }}"/>
+								</figure>
+								{% endif %}
+								{{ form_widget(pictureForm.imgPath, {'attr': {'class': 'form-control'}})}}
+								{{ form_errors(pictureForm.imgPath) }}
+							</div>
+						</div>							
+						<div class="form-row p-1 justify-content-center">
+							<button id="btnSubmitPicture" name="btnSubmitPicture" class="btn btn-primary">Valider</button>
+							<a href="{{ path('member', { 'accordion': 'picture' }) }}" class="btn btn-danger ml-2">Annuler</a>
+						</div>
+					</fieldset>
+                {{ form_end(pictureForm) }}
+			</div>
+		</div>
+	</main>		
+
+{% endblock %}

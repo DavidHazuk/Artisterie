@@ -1,0 +1,54 @@
+		<footer id="footerSite">
+			<div class="container-fluid" id="footer">				
+				<!-- Attributs data-paroller pour la parallax de l'équalizer-->
+				<div id="equalizer_top" data-paroller-factor="0.2" data-paroller-direction="horizontal">		
+				</div>
+				{% if quote %}
+					{% for quote in quote %}
+					<p class="text-center">{{quote.quote}}</p>
+						{% if quote.author is not empty %}
+						<p class="text-center font-italic">- {{quote.author}} -</p>
+						{% endif %}
+					{% endfor %}
+				{% else %}
+				<p class="text-center">Problème de chargement de la citation</p>
+				{% endif %}
+				<div id="equalizer_bot" data-paroller-factor="0.2" data-paroller-direction="horizontal">
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="text-center col-12 col-md-4 mt-3 d-flex align-items-center justify-content-center">
+							<ul>
+		                        <li><a href="{{ path('home') }}">L'Artisterie</a></li>
+		                        <li><a href="{{ path('page', { 'pagename': 'studio' }) }}">Studio</a></li>                    
+		                        <li><a href="{{ path('page', { 'pagename': 'rehearsal' }) }}">Répétitions</a></li>                    
+		                        <li><a href="{{ path('page', { 'pagename': 'artists' }) }}">Artistes</a></li>                    
+		                        <li><a href="{{ path('page', { 'pagename': 'news' }) }}">Actus</a></li>
+		                    </ul>
+						</div>
+						<div class="text-center col-12 col-md-4 separate mt-4 d-flex align-items-center">
+							<ul class="links row justify-content-center">
+		                        <li class='col-4 col-sm-3 col-md-4 col-lg-3'><a href="https://www.facebook.com/"><img id="social_3" src="{{ asset('/img/fb_grey.png') }}" alt="facebook"></a></li> 
+								<li class='col-4 col-sm-3 col-md-4 col-lg-3'><a href="https://soundcloud.com/"><img id="social_1" src="{{ asset('/img/soundcloud_grey.png') }}" alt="soundcloud"></a></li>
+		                        <li class='col-4 col-sm-3 col-md-4 col-lg-3'><a href="https://www.youtube.com/"><img id="social_2" src="{{ asset('/img/youtube_grey.png') }}" alt="youtube"></a></li> 
+		                    </ul>
+						</div>
+						<div class="text-center col-12 col-md-4 mt-3">
+							<ul class="mb-3">
+		                        <li class="mb-2 text-uppercase">Contact L'Artisterie</li>								
+								<li>185 rue Jean Voillot</li>
+								<li class="mb-2">69100 VILLEURBANNE</li>
+		                        <li>06 65 07 47 31</li>
+		                        <li><a href="mailto:artisterie.artisterie@gmail.com?subject=Demande%20d'informations%20Artisterie&body=Votre%20messsage%20ici">artisterie.artisterie@gmail.com</a></li>
+		                    </ul>
+		                    <a id="btnContact" href="{{ path('contact') }}" class="btn btn-dark my-3">Plus d'infos</a>
+						</div>
+					</div>
+					<div class="row justify-content-center">
+		                <a href="#" class="p-3">Plan du site</a>
+		                <a href="#" class="p-3">Mentions légales</a>
+						<p class="p-3 font-italic">&copy; L'Artisterie 2018</p>
+					</div>					
+				</div>
+			</div>			
+		</footer>

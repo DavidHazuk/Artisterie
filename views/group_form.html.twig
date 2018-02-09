@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+{% set memberMenu = true %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+	<main id="mainUserForm" class="container-fluid">
+		<div class="container">
+			<div class="row py-4">
+				<h2 class="text-center px-0 px-md-3">{{ block('title') }}</h2>
+				{% if form_errors(groupForm) %}
+					<div class="alert alert-danger">
+						{{ form_errors(groupForm) }}
+					</div>
+				{% endif %}
+		        {{ form_start(groupForm, {'attr': {'class': 'col-12 pt-3 px-0 px-md-3'}} ) }}
+					<fieldset class="col-12 d-flex flex-wrap px-0">
+						<div class="form-row">
+							<div class="form-group col-12 col-md-6">
+								{{ form_label(groupForm.name) }}
+								{{ form_widget(groupForm.name, {'attr': {'class': 'form-control', 'placeholder':"Nom du groupe"}})}}
+								{{ form_errors(groupForm.name) }}
+							</div>
+							<div class="form-group col-12 col-md-6">
+								{{ form_label(groupForm.room) }}
+								{{ form_widget(groupForm.room, {'attr': {'class': 'form-control'}})}}
+								{{ form_errors(groupForm.room) }}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-12">
+								{{ form_label(groupForm.imgPath)}}
+								{% if avatarPath is not null %}
+								<figure class="p-3 border border-1 border-dark col-8 offset-2 col-sm-4 offset-sm-4 col-md-2 offset-md-5">
+									<img src="{{ asset(avatarPath) }}" alt="avatar groupe"/>
+								</figure>
+								{% endif %}
+								{{ form_widget(groupForm.imgPath, {'attr': {'class': 'form-control'}})}}
+								{{ form_errors(groupForm.imgPath) }}
+							</div>
+						</div>							
+						<div class="form-row p-1 justify-content-center">
+							<button id="btnSubmitGroup" name="btnSubmitGroup" class="btn btn-primary">Valider</button>
+							<a href="{{ path('member', { 'accordion': 'group' }) }}" class="btn btn-danger ml-2">Annuler</a>
+						</div>
+					</fieldset>
+                {{ form_end(groupForm) }}
+			</div>
+		</div>
+	</main>		
+
+{% endblock %}
